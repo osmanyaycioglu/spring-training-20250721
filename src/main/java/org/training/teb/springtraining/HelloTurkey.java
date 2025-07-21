@@ -2,12 +2,16 @@ package org.training.teb.springtraining;
 
 import org.springframework.stereotype.Component;
 
-@Component("helloBean")
-public class HelloWorld {
+@Component("helloTurkeyBean")
+public class HelloTurkey {
 
-    public HelloWorld() {
-        System.out.println("HelloWorld created");
+
+    public HelloTurkey() {
     }
+
+//    public HelloTurkey() {
+//        System.out.println("HelloTurkey created");
+//    }
 
     public String hello(String name){
         return "Hello " + name;
