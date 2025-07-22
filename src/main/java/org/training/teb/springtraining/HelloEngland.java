@@ -1,14 +1,14 @@
 package org.training.teb.springtraining;
 
-import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-@Component("helloTurkeyBean")
-@DependsOn("helloBean")
-public class HelloTurkey {
+@Component
+@Lazy
+public class HelloEngland {
 
 
-    public HelloTurkey() {
+    public HelloEngland() {
     }
 
 //    public HelloTurkey() {
