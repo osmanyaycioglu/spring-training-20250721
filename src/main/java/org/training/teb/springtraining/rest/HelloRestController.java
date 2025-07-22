@@ -1,5 +1,7 @@
 package org.training.teb.springtraining.rest;
 
+import a.b.c.MyOtherBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 //@Repository
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/my")
 public class HelloRestController {
+
+    @Autowired
+    private MyOtherBean myOtherBean;
 
     // @RequestMapping(path = "/my/hello", method = RequestMethod.GET)
     @GetMapping("/hello")

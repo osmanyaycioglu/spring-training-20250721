@@ -2,18 +2,23 @@ package org.training.teb.springtraining;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"org.training.teb",
+                                           "a.b.c"
+})
 public class SpringTrainingApplication {
     // Field Injection
     @Autowired
     private HelloWorld helloWorld;
     @Autowired
+    @Qualifier("myHello")
     private HelloWorld helloWorld2;
     @Autowired
+    @Qualifier("haName")
     private HelloWorld helloWorld3;
     @Autowired
     private HelloWorld helloWorld4;
@@ -26,7 +31,7 @@ public class SpringTrainingApplication {
 
     // Constructor Injection
     // @Autowired
-    public SpringTrainingApplication(final HelloWorld helloWorld5Param) {
+    public SpringTrainingApplication(@Qualifier("anotherHello") final HelloWorld helloWorld5Param) {
         helloWorld5 = helloWorld5Param;
     }
 
