@@ -1,5 +1,6 @@
 package org.training.teb.springtraining.injection;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,7 +8,9 @@ import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("/api/v1/bank/money/operations")
+@RequiredArgsConstructor
 public class BankMoneyOperationsRestController {
+    private final PersonCacheService personCacheService;
 
     @Autowired
     private IProcess[] process;
@@ -27,10 +30,11 @@ public class BankMoneyOperationsRestController {
     }
 
     @GetMapping("/operation/{opId}")
-    public void executeOp(@PathVariable int opId,
-                          @RequestParam Long cutomerId,
+    public String executeOp(@PathVariable int opId,
+                          @RequestParam Long personId                              ,
                           @RequestParam BigDecimal amount) {
-        process[opId - 1].execute(, );
+        Person personLoc = personCacheService.getPerson(personId);
+        return process[opId - 1].execute(personLoc,amount);
     }
 }
 

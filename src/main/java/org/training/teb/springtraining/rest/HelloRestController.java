@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 //@Controller
 //@ResponseBody
 
-@RestController
+@RestController("helloR")
 @RequestMapping("/my")
 public class HelloRestController {
 
