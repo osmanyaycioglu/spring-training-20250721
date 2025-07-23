@@ -44,6 +44,10 @@ my:
         sub-name: test3
 server:
   port: 8080
+  error:
+    include-message: always
+    include-exception: true
+    include-binding-errors: always
 spring:
   application:
     name: spring-training
