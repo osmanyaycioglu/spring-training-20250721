@@ -1,0 +1,51 @@
+app:
+  language: ger
+  type: live
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+my:
+  app:
+    all-sub-props:
+      - address: basaksehir
+        departments:
+          - DE1
+          - DE2ğğ
+        sub-name: test1
+      - address: besiktas
+        departments:
+          - DE3
+          - DE4
+        sub-name: test2
+    language: eng
+    long-description: deneme yapisi
+    nick-names:
+      - osman
+      - osm
+      - osmen
+      - osoman
+      - sdhfghsd
+    port: 1000
+    sub-props:
+      address: atasehir 123
+      departments:
+        - IT
+        - SALE
+        - sdbhfwkf
+      sub-name: deneme
+    sub-props-map:
+      abc:
+        address: etiler
+        departments:
+          - IT
+          - PPP
+        sub-name: test3
+server:
+  port: 8080
+spring:
+  application:
+    name: spring-training
+  profiles:
+    default: live
