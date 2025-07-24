@@ -1,5 +1,6 @@
 package org.training.teb.springtraining.person.service.models;
 
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -12,13 +13,20 @@ import java.math.BigDecimal;
 //@AllArgsConstructor
 @Data
 @NoArgsConstructor
+@Entity
+@Table(name = "person")
 public class Person {
+    @Id
+    @GeneratedValue
     private Long          personId;
+    @Column(name = "person_name")
     private String        name;
     private String        surname;
     private Integer       weight;
     private Integer       height;
     private BigDecimal    amount;
+
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private PersonDetails personDetails;
     private EStatus       personStatus;
 

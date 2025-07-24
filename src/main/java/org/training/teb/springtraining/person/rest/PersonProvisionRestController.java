@@ -19,10 +19,14 @@ public class PersonProvisionRestController implements IPersonProvisionRestContro
 
     @PostMapping("/add")
     public PersonAddResponse add(@Valid @RequestBody PersonDto personDtoParam) {
-        personProvisionService.addPerson(IPersonMapper.PERSON_MAPPER.toPerson(personDtoParam));
+        Long lLoc = personProvisionService.addPerson(IPersonMapper.PERSON_MAPPER.toPerson(personDtoParam));
 
-        return new PersonAddResponse("basarili",
-                                     12L);
+        return new PersonAddResponse("Person "
+                                     + personDtoParam.getName()
+                                     + " "
+                                     + personDtoParam.getSurname()
+                                     + " eklendi.",
+                                     lLoc);
     }
 
     @PostMapping("/add2")
