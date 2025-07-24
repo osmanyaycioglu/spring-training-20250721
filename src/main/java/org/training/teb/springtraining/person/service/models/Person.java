@@ -1,9 +1,13 @@
 package org.training.teb.springtraining.person.service.models;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Set;
 
 //@Getter
 //@Setter
@@ -21,14 +25,21 @@ public class Person {
     private Long          personId;
     @Column(name = "person_name")
     private String        name;
+    @NotBlank
     private String        surname;
     private Integer       weight;
     private Integer       height;
     private BigDecimal    amount;
 
-    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "person")
     private PersonDetails personDetails;
-    private EStatus       personStatus;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "person_status",nullable = false)
+    @NotNull
+    private EStatus       personStatus = EStatus.ACTIVE;
+
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Set<PersonPhone> personPhones;
 
     @Builder
     public Person(final Long personId,
