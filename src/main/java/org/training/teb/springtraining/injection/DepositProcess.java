@@ -1,6 +1,7 @@
 package org.training.teb.springtraining.injection;
 
 import org.springframework.stereotype.Component;
+import org.training.teb.springtraining.person.service.models.Person;
 
 import java.math.BigDecimal;
 

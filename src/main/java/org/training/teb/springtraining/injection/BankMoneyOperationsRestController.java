@@ -3,6 +3,7 @@ package org.training.teb.springtraining.injection;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.training.teb.springtraining.person.service.models.Person;
 
 import java.math.BigDecimal;
 

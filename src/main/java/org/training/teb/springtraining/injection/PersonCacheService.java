@@ -1,9 +1,9 @@
 package org.training.teb.springtraining.injection;
 
 import org.springframework.stereotype.Service;
+import org.training.teb.springtraining.person.service.models.Person;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -14,30 +14,22 @@ public class PersonCacheService {
     public PersonCacheService() {
         personMap.put(1L,
                       Person.builder()
-                            .withPersonIdParam(1L)
-                            .withNameParam("osman")
-                            .withSurnameParam("yaycıoğlu")
-                            .withWeightParam(90)
-                            .withHeightParam(200)
-                            .withAmountParam(new BigDecimal(1000))
+                            .personId(1L)
+                            .name("osman")
+                            .surname("yaycıoğlu")
+                            .weight(90)
+                            .height(200)
+                            .amount(new BigDecimal(1000))
                             .build());
+
         personMap.put(2L,
                       Person.builder()
-                            .withPersonIdParam(2L)
-                            .withNameParam("ali")
-                            .withSurnameParam("veli")
-                            .withWeightParam(80)
-                            .withHeightParam(180)
-                            .withAmountParam(new BigDecimal(3000))
-                            .build());
-        personMap.put(3L,
-                      Person.builder()
-                            .withPersonIdParam(3L)
-                            .withNameParam("mehmet")
-                            .withSurnameParam("alaz")
-                            .withWeightParam(70)
-                            .withHeightParam(160)
-                            .withAmountParam(new BigDecimal(5000))
+                            .personId(2L)
+                            .name("ali")
+                            .surname("veli")
+                            .weight(90)
+                            .height(200)
+                            .amount(new BigDecimal(1000))
                             .build());
 
     }
