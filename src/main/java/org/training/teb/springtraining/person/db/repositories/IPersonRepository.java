@@ -3,6 +3,7 @@ package org.training.teb.springtraining.person.db.repositories;
 import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Lock;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -31,6 +32,10 @@ public interface IPersonRepository extends JpaRepository<Person, Long> {
     Stream<Person> findByNameAndAmountBetween(String name,
                                               BigDecimal low,
                                               BigDecimal high);
+
+    @Modifying
+    @Query("update Person p set p.height=?1 where p.personId= ?2")
+    void updateHeight(Integer height,Long personId);
 
     @Query("select p from Person p where p.name=?1")
     List<Person> searchName(String name);
