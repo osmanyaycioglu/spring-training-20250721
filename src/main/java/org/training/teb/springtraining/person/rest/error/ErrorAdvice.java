@@ -1,5 +1,7 @@
 package org.training.teb.springtraining.person.rest.error;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,6 +13,7 @@ import java.util.stream.Collectors;
 
 @RestControllerAdvice
 public class ErrorAdvice {
+    private static final Logger logger = LoggerFactory.getLogger(ErrorAdvice.class);
 
     @ExceptionHandler(IllegalArgumentException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -41,6 +44,8 @@ public class ErrorAdvice {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorObj> handle(Exception exp) {
+        logger.error("[ErrorAdvice][handle]-> *Error* : " + exp.getMessage(),
+                     exp);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                              .header("error",
                                      "yanlış kodlama")

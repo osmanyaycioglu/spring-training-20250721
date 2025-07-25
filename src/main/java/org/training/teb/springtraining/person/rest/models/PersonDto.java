@@ -5,6 +5,7 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 public class PersonDto {
@@ -27,4 +28,8 @@ public class PersonDto {
     @Valid
     @NotNull
     private PersonDetailsDto personDetails;
+    @Valid
+    @NotNull
+    @Size(min = 1)
+    private List<PersonPhoneDto> personPhones;
 }

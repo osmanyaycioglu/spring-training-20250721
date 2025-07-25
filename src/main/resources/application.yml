@@ -69,3 +69,7 @@ spring:
       hibernate:
         format_sql: true
         show_sql: true
+  task:
+    scheduling:
+      pool:
+        size: 5

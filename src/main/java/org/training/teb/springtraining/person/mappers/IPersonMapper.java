@@ -6,6 +6,8 @@ import org.mapstruct.factory.Mappers;
 import org.training.teb.springtraining.person.rest.models.PersonDto;
 import org.training.teb.springtraining.person.service.models.Person;
 
+import java.util.List;
+
 @Mapper
 public interface IPersonMapper {
     IPersonMapper PERSON_MAPPER = Mappers.getMapper(IPersonMapper.class);
@@ -14,6 +16,8 @@ public interface IPersonMapper {
 
     PersonDto toPersonDto(Person person);
 
+    List<Person> toPersons(List<PersonDto> person);
 
+    List<PersonDto> toPersonDtos(List<Person> person);
 
 }

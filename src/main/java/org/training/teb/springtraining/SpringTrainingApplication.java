@@ -6,10 +6,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.ImportResource;
+import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 @SpringBootApplication(scanBasePackages = {"org.training.teb",
                                            "a.b.c"
 })
+@EnableScheduling
+@EnableAsync
 public class SpringTrainingApplication {
     // Field Injection
     @Autowired
@@ -59,6 +67,14 @@ public class SpringTrainingApplication {
         System.out.println(beanLoc.helloWorld2.hello("osman2"));
         System.out.println(beanLoc.helloWorld3.hello("osman1"));
         System.out.println(beanLoc.helloWorld4.hello("osman1"));
+        Future<String> stringFutureLoc = beanLoc.helloWorld4.asyncHello("osman3");
+        System.out.println("another code");
+        try {
+            boolean doneLoc  = stringFutureLoc.isDone();
+            String stringLoc = stringFutureLoc.get();
+        } catch (Exception eParam) {
+            eParam.printStackTrace();
+        }
 
         //        HelloWorld helloWorldLoc = new HelloWorld();
         //        String     helloLoc      = helloWorldLoc.hello("osman");

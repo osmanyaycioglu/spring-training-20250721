@@ -1,13 +1,21 @@
 package org.training.teb.springtraining.person.service.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
-@Data
+import java.util.Objects;
+
+@Getter
+@Setter
 @Entity
+@ToString(exclude = "person")
 public class PersonDetails {
     @Id
     @GeneratedValue
@@ -21,3 +29,4 @@ public class PersonDetails {
     private Person person;
 
 }
+
